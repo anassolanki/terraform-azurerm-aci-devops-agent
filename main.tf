@@ -47,6 +47,10 @@ resource "azurerm_container_group" "linux-container-group" {
     security {
       privilege_enabled = var.privilege_enabled
     }
+    volume {
+      name = "docker-socket"
+      path = "/var/run/docker.sock:/var/run/docker.sock"
+    }
 
     # this field seems to be mandatory (error happens if not there). See https://github.com/terraform-providers/terraform-provider-azurerm/issues/1697#issuecomment-608669422
     ports {
