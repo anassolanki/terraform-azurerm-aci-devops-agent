@@ -38,6 +38,12 @@ variable "subnet_name" {
   description = "(Optional) The name of the subnet of the vnet in which the containerized agents will be deployed"
 }
 
+variable "privilege_enabled" {
+  type        = bool
+  default     = false
+  description = "(Optional) run container in privilege mode"
+}
+
 variable "azure_devops_org_name" {
   type        = string
   description = "The name of the Azure DevOps organization in which the containerized agents will be deployed (e.g. https://dev.azure.com/YOUR_ORGANIZATION_NAME, must exist)"
