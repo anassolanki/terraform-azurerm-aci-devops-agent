@@ -49,7 +49,7 @@ resource "azurerm_container_group" "linux-container-group" {
     }
     volume {
       name = "docker-socket"
-      mount_path = "/var/run/docker.sock:/var/run/docker.sock"
+      mount_path = "/var/run/docker.sock"
       empty_dir = true
     }
 
