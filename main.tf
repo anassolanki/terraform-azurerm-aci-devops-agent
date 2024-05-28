@@ -44,11 +44,6 @@ resource "azurerm_container_group" "linux-container-group" {
     image  = "${var.linux_agents_configuration.docker_image}:${var.linux_agents_configuration.docker_tag}"
     cpu    = var.linux_agents_configuration.cpu
     memory = var.linux_agents_configuration.memory
-    volume {
-      name = "docker-socket"
-      mount_path = "/var/run/docker.sock"
-      empty_dir = true
-    }
 
     # this field seems to be mandatory (error happens if not there). See https://github.com/terraform-providers/terraform-provider-azurerm/issues/1697#issuecomment-608669422
     ports {
