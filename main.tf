@@ -50,7 +50,7 @@ resource "azurerm_container_group" "linux-container-group" {
     volume {
       name = "docker-socket"
       mount_path = "/var/run/docker.sock:/var/run/docker.sock"
-      empty_dir = false
+      empty_dir = true
     }
 
     # this field seems to be mandatory (error happens if not there). See https://github.com/terraform-providers/terraform-provider-azurerm/issues/1697#issuecomment-608669422
