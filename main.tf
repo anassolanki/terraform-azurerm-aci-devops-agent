@@ -44,9 +44,6 @@ resource "azurerm_container_group" "linux-container-group" {
     image  = "${var.linux_agents_configuration.docker_image}:${var.linux_agents_configuration.docker_tag}"
     cpu    = var.linux_agents_configuration.cpu
     memory = var.linux_agents_configuration.memory
-    security {
-      privilege_enabled = var.privilege_enabled
-    }
     volume {
       name = "docker-socket"
       mount_path = "/var/run/docker.sock"
