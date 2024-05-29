@@ -35,8 +35,8 @@ The configuration below can be used to deploy Linux DevOps agents using Azure Co
 
 ```hcl
 module "aci-devops-agent" {
-  source                  = "Azure/aci-devops-agent/azurerm"
-  version                 = "0.9.2"
+  source                  = "anassolanki/aci-devops-agent/azurerm"
+  version                 = "1.0.0"
   resource_group_name     = "rg-linux-devops-agents"
   location                = "westeurope"
   enable_vnet_integration = false
@@ -46,8 +46,8 @@ module "aci-devops-agent" {
     agent_name_prefix = "linux-agent"
     agent_pool_name   = "DEVOPS_POOL_NAME"
     count             = 2,
-    docker_image      = "jcorioland/aci-devops-agent"
-    docker_tag        = "0.2-linux"
+    docker_image      = "anassolanki330/azp-agent"
+    docker_tag        = "latest"
     cpu               = 1
     memory            = 4
     user_assigned_identity_ids   = []
@@ -107,8 +107,8 @@ resource "azurerm_subnet" "aci-subnet" {
 }
 
 module "aci-devops-agent" {
-  source                   = "Azure/aci-devops-agent/azurerm"
-  version                  = "0.9.2"
+  source                   = "anassolanki/aci-devops-agent/azurerm"
+  version                  = "1.0.0"
   resource_group_name      = "rg-linux-devops-agents"
   location                 = "westeurope"
   enable_vnet_integration  = true
@@ -121,8 +121,8 @@ module "aci-devops-agent" {
     agent_name_prefix = "linux-agent"
     agent_pool_name   = "DEVOPS_POOL_NAME"
     count             = 2,
-    docker_image      = "jcorioland/aci-devops-agent"
-    docker_tag        = "0.2-linux"
+    docker_image      = "anassolanki330/azp-agent"
+    docker_tag        = "latest"
     cpu               = 1
     memory            = 4
     user_assigned_identity_ids   = []
@@ -154,8 +154,8 @@ The configuration below can be used to deploy Azure DevOps Linux and Windows age
 
 ```hcl
 module "aci-devops-agent" {
-  source                  = "Azure/aci-devops-agent/azurerm"
-  version                 = "0.9.2"
+  source                  = "anassolanki/aci-devops-agent/azurerm"
+  version                 = "1.0.0"
   resource_group_name     = "rg-aci-devops-agents-we"
   location                = "westeurope"
   enable_vnet_integration = false
@@ -165,8 +165,8 @@ module "aci-devops-agent" {
     agent_name_prefix = "linux-agent"
     agent_pool_name   = "DEVOPS_POOL_NAME"
     count             = 2,
-    docker_image      = "jcorioland/aci-devops-agent"
-    docker_tag        = "0.2-linux"
+    docker_image      = "anassolanki330/azp-agent"
+    docker_tag        = "latest"
     cpu               = 1
     memory            = 4
     user_assigned_identity_ids   = []
@@ -208,8 +208,8 @@ This module allows to download the Docker images to use for the agents from a pr
 
 ```hcl
 module "aci-devops-agent" {
-  source                  = "Azure/aci-devops-agent/azurerm"
-  version                 = "0.9.2"
+  source                  = "anassolanki/aci-devops-agent/azurerm"
+  version                 = "1.0.0"
   resource_group_name     = "rg-linux-devops-agents"
   location                = "westeurope"
   enable_vnet_integration = false
@@ -271,8 +271,8 @@ resource "azurerm_user_assigned_identity" "example2" {
   name = "identity2"
 }
 module "aci-devops-agent" {
-  source                  = "Azure/aci-devops-agent/azurerm"
-  version                 = "0.9.2"
+  source                  = "anassolanki/aci-devops-agent/azurerm"
+  version                 = "1.0.0"
   resource_group_name     = "rg-linux-devops-agents"
   location                = "westeurope"
   enable_vnet_integration = false
