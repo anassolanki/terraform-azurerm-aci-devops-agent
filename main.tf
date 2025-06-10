@@ -11,14 +11,6 @@ data "azurerm_resource_group" "rg" {
   name  = var.resource_group_name
 }
 
-data "azurerm_subnet" "subnet" {
-  # the subnet is imported only enable_vnet_integration is true
-  count                = var.enable_vnet_integration ? 1 : 0
-  name                 = var.subnet_name
-  virtual_network_name = var.vnet_name
-  resource_group_name  = var.vnet_resource_group_name
-}
-
 locals {
   # umi == user managed identity, smi == system managed identity
   use_umi                    = length(var.linux_agents_configuration.user_assigned_identity_ids) > 0
@@ -37,7 +29,7 @@ resource "azurerm_container_group" "linux-container-group" {
   resource_group_name = var.create_resource_group ? azurerm_resource_group.rg[0].name : data.azurerm_resource_group.rg[0].name
   ip_address_type     = var.enable_vnet_integration ? "Private" : "Public"
   os_type             = "Linux"
-  subnet_ids          = var.enable_vnet_integration ? [data.azurerm_subnet.subnet[0].id] : null
+  subnet_ids          = var.enable_vnet_integration ? [var.subnet_id] : null
 
   container {
     name   = "${var.linux_agents_configuration.agent_name_prefix}-${count.index}"
