@@ -20,22 +20,10 @@ variable "enable_vnet_integration" {
   description = "(Optional) A flag that indicates if the containerized agents must be deployed into an existing virtual network"
 }
 
-variable "vnet_resource_group_name" {
+variable "subnet_id" {
   type        = string
   default     = ""
-  description = "(Optional) The name of the resource group that contains the virtual network in which the containerized agents will be deployed"
-}
-
-variable "vnet_name" {
-  type        = string
-  default     = ""
-  description = "(Optional) The name of the virtual network in which the containerized agents will be deployed"
-}
-
-variable "subnet_name" {
-  type        = string
-  default     = ""
-  description = "(Optional) The name of the subnet of the vnet in which the containerized agents will be deployed"
+  description = "(Optional) The id of the subnet of the vnet in which the containerized agents will be deployed"
 }
 
 variable "privilege_enabled" {
