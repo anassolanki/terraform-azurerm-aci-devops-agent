@@ -18,11 +18,6 @@ output "vnet_integration_enabled" {
   description = "A flag that indicates if the vnet integration has been enabled with the current configuration."
 }
 
-output "subnet_id" {
-  value       = var.enable_vnet_integration ? data.azurerm_subnet.subnet[0].id : ""
-  description = "If the vnet integration is enabled, the id of the subnet in which the agents are deployed."
-}
-
 output "has_windows_agents" {
   value       = length(azurerm_container_group.windows-container-group) > 0 ? true : false
   description = "A flag that indicates if Windows agents have been deployed with the current configuration."
